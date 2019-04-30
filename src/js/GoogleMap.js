@@ -8,7 +8,7 @@ export default class GoogleMap extends Component {
 
   constructor(props) {
     super(props);
-    // this.mapRef = React.createRef();
+    this.mapRef = React.createRef();
     this.state = {
       markers: [],
     };
@@ -19,7 +19,7 @@ export default class GoogleMap extends Component {
     const uluru = { lat: -25.344, lng: 131.036 };
     // The map, centered at Uluru
     // eslint-disable-next-line no-undef
-    const map = new google.maps.Map(document.getElementById('map'), {
+    const map = new google.maps.Map(this.mapRef.current, {
       zoom: 4,
       center: uluru,
     });
@@ -31,7 +31,7 @@ export default class GoogleMap extends Component {
   render() {
     return (
       <div className="mapContainer">
-        <div id="map" ref={this.myRef} />
+        <div id="map" ref={this.mapRef} />
       </div>
     );
   }

@@ -16,6 +16,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { properties } = this.state;
     return (
       <div>
         {/* listings - Start */}
@@ -103,7 +104,9 @@ class App extends React.Component {
 
           <div className="cards container">
             <div className="cards-list row ">
-              <Card />
+              {properties.map(property => (
+                <Card property={property} />
+              ))}
             </div>
           </div>
         </div>

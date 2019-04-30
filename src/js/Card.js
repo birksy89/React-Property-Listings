@@ -13,7 +13,7 @@ const Card = props => (
       <p className="location">
         Singer
         <br />
-        914 Argyle Road
+        915 Argyle Road
       </p>
       <ul className="features">
         <li className="icon-bed">
@@ -30,6 +30,8 @@ const Card = props => (
   </div>
 );
 
-Card.propTypes = {};
+Card.propTypes = {
+  property: PropTypes.object.isRequired,
+};
 
 export default Card;

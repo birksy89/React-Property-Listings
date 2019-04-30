@@ -16,6 +16,12 @@ class App extends React.Component {
     };
   }
 
+  setActiveProperty = property => {
+    this.setState({
+      activeProperty: property,
+    });
+  };
+
   render() {
     const { properties, activeProperty } = this.state;
     return (
@@ -107,7 +113,7 @@ class App extends React.Component {
             <div className="cards-list row ">
               {properties.map(property => (
                 <Card
-                  key={property.id}
+                  key={property._id}
                   property={property}
                   activeProperty={activeProperty}
                 />
@@ -118,7 +124,11 @@ class App extends React.Component {
         {/* listings - End */}
 
         {/* mapContainer - Start */}
-        <GoogleMap properties={properties} activeProperty={activeProperty} />
+        <GoogleMap
+          properties={properties}
+          activeProperty={activeProperty}
+          setActiveProperty={this.setActiveProperty}
+        />
         {/* mapContainer - End */}
       </div>
     );

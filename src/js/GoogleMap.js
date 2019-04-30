@@ -24,7 +24,7 @@ export default class GoogleMap extends Component {
     const myCenter = { lat: latitude, lng: longitude };
     // The map, centered at myCenter
     this.map = new google.maps.Map(this.mapRef.current, {
-      zoom: 14,
+      zoom: 15,
       mapTypeControl: false,
       center: myCenter,
     });

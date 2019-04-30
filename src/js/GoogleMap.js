@@ -15,17 +15,20 @@ export default class GoogleMap extends Component {
   }
 
   componentDidMount() {
-    // The location of Uluru
-    const uluru = { lat: -25.344, lng: 131.036 };
-    // The map, centered at Uluru
+    const { activeProperty } = this.props;
+
+    const { latitude, longitude } = activeProperty;
+    // The location of myCenter
+    const myCenter = { lat: latitude, lng: longitude };
+    // The map, centered at myCenter
     // eslint-disable-next-line no-undef
     const map = new google.maps.Map(this.mapRef.current, {
       zoom: 4,
-      center: uluru,
+      center: myCenter,
     });
-    // The marker, positioned at Uluru
+    // The marker, positioned at myCenter
     // eslint-disable-next-line no-undef
-    const marker = new google.maps.Marker({ position: uluru, map });
+    const marker = new google.maps.Marker({ position: myCenter, map });
   }
 
   render() {

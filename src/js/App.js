@@ -118,7 +118,7 @@ class App extends React.Component {
         {/* listings - End */}
 
         {/* mapContainer - Start */}
-        <GoogleMap properties={properties} />
+        <GoogleMap properties={properties} activeProperty={activeProperty} />
         {/* mapContainer - End */}
       </div>
     );

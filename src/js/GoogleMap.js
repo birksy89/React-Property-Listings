@@ -34,10 +34,12 @@ export default class GoogleMap extends Component {
   }
 
   createMarkers(properties) {
-    const { setActiveProperty } = this.props;
+    const { setActiveProperty, activeProperty } = this.props;
+    const activePropertyIndex = activeProperty.index;
+    const { markers } = this.state;
 
     properties.map(property => {
-      const { latitude, longitude, index } = property;
+      const { latitude, longitude, index, address } = property;
       this.marker = new google.maps.Marker({
         position: { lat: latitude, lng: longitude },
         map: this.map,
@@ -57,12 +59,33 @@ export default class GoogleMap extends Component {
         },
       });
 
+      // create info window for each marker
+      const iw = new google.maps.InfoWindow({
+        content: `<h1>${address}</h1>`,
+      });
+
+      this.marker.iw = iw;
+
       this.marker.addListener('click', function() {
+        // hide all other info boxes on click
+        markers.forEach(marker => {
+          marker.iw.close();
+        });
+
         // set active property onto the state
         setActiveProperty(property);
       });
 
-      return property;
+      // push this marker to the markers array on the state
+      markers.push(this.marker);
+
+      // show active property info window
+      // eslint-disable-next-line no-unused-expressions
+      markers[activePropertyIndex] &&
+        markers[activePropertyIndex].iw.open(
+          this.map,
+          markers[activePropertyIndex]
+        );
     });
   }
 

@@ -15,7 +15,7 @@ const Card = ({ property, activeProperty }) => {
 
   return (
     <div
-      id="card-0"
+      id={`card-${index}`}
       className={`card col-sm-12 col-md-6 col-lg-4 ${
         activeProperty === property ? 'is-active' : ''
       } `}

@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import jump from 'jump.js';
 import image from '../images/house-location-pin.svg';
-import data from './data/Data';
 import Card from './Card';
 import GoogleMap from './GoogleMap';
+import data from './data/Data';
+import { easeInOutCubic } from './utils/Easing';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,15 +14,26 @@ class App extends React.Component {
 
     this.state = {
       properties: data.properties,
-      activeProperty: data.properties[0],
+      activeProperty: data.properties[10],
     };
+
+    this.setActiveProperty = this.setActiveProperty.bind(this);
   }
 
-  setActiveProperty = property => {
+  setActiveProperty(property) {
+    const { index } = property;
+
     this.setState({
       activeProperty: property,
     });
-  };
+
+    // scroll to the right property
+    const target = `#card-${index}`;
+    jump(target, {
+      duration: 800,
+      easing: easeInOutCubic,
+    });
+  }
 
   render() {
     const { properties, activeProperty } = this.state;
@@ -118,18 +131,17 @@ class App extends React.Component {
                   activeProperty={activeProperty}
                 />
               ))}
+              )}
             </div>
           </div>
         </div>
         {/* listings - End */}
 
-        {/* mapContainer - Start */}
         <GoogleMap
           properties={properties}
           activeProperty={activeProperty}
           setActiveProperty={this.setActiveProperty}
         />
-        {/* mapContainer - End */}
       </div>
     );
   }

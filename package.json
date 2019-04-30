@@ -52,6 +52,7 @@
     "webpack-dev-server": "2.5.1"
   },
   "dependencies": {
+    "jump.js": "^1.0.2",
     "prop-types": "15.5.10",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

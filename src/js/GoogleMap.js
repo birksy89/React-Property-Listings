@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -21,14 +22,13 @@ export default class GoogleMap extends Component {
     // The location of myCenter
     const myCenter = { lat: latitude, lng: longitude };
     // The map, centered at myCenter
-    // eslint-disable-next-line no-undef
     const map = new google.maps.Map(this.mapRef.current, {
       zoom: 14,
       mapTypeControl: false,
       center: myCenter,
     });
     // The marker, positioned at myCenter
-    // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-unused-vars
     const marker = new google.maps.Marker({ position: myCenter, map });
   }
 

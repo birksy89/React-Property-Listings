@@ -1,6 +1,7 @@
 import React from 'react';
 import image from '../images/house-location-pin.svg'
 import data from './data/Data'
+import Card from './Card'
 
 class App extends React.Component {
 
@@ -97,23 +98,7 @@ class App extends React.Component {
           <div className="cards container">
             <div className="cards-list row ">
 
-              {/* Property card - Start */}
-              <div id="card-0" className="card col-sm-12 col-md-6 col-lg-4 is-active">
-                <img src="https://ihatetomatoes.net/demos/_rw/01-real-estate/tn_property01.jpg" alt="Singer" />
-                <p className="price">$937,180</p>
-                <div className="details">
-                  <span className="index">1</span>
-                  <p className="location">
-                    Singer<br />914 Argyle Road
-                  </p>
-                  <ul className="features">
-                    <li className="icon-bed">2<span>bedrooms</span></li>
-                    <li className="icon-bath">2<span>bathrooms</span></li>
-                    <li className="icon-car">2<span>parking spots</span></li>
-                  </ul>
-                </div>
-              </div>
-              {/* Property card - End */}
+          <Card/>
 
 
 

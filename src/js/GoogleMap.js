@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export default class GoogleMap extends Component {
   static propTypes = {
     properties: PropTypes.array.isRequired,
+    activeProperty: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -16,14 +17,14 @@ export default class GoogleMap extends Component {
 
   componentDidMount() {
     const { activeProperty } = this.props;
-
     const { latitude, longitude } = activeProperty;
     // The location of myCenter
     const myCenter = { lat: latitude, lng: longitude };
     // The map, centered at myCenter
     // eslint-disable-next-line no-undef
     const map = new google.maps.Map(this.mapRef.current, {
-      zoom: 4,
+      zoom: 14,
+      mapTypeControl: false,
       center: myCenter,
     });
     // The marker, positioned at myCenter

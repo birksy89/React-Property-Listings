@@ -79,27 +79,34 @@ class App extends React.Component {
 
     this.setState({
       filteredProperties: getFilteredProperties(properties),
+      activeProperty: getFilteredProperties(properties)[0],
       isFiltering,
     });
   };
 
   render() {
-    const { properties, activeProperty, filterIsVisible } = this.state;
+    const {
+      properties,
+      activeProperty,
+      filterIsVisible,
+      filteredProperties,
+      isFiltering,
+    } = this.state;
+
+    const propertiesList = isFiltering ? filteredProperties : properties;
+
     return (
       <div>
-        {/* listings - Start */}
         <div className="listings">
-          {/* Header - Start - add .filter-is-visible to show filter */}
           <Header
             filterIsVisible={filterIsVisible}
             toggleFilter={this.toggleFilter}
             handleFilterChange={this.handleFilterChange}
           />
-          {/* Header - End */}
 
           <div className="cards container">
             <div className="cards-list row ">
-              {properties.map(property => (
+              {propertiesList.map(property => (
                 <Card
                   key={property._id}
                   property={property}
@@ -110,12 +117,13 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-        {/* listings - End */}
 
         <GoogleMap
           properties={properties}
           activeProperty={activeProperty}
           setActiveProperty={this.setActiveProperty}
+          filteredProperties={filteredProperties}
+          isFiltering={isFiltering}
         />
       </div>
     );

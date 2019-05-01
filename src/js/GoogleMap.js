@@ -7,6 +7,8 @@ export default class GoogleMap extends Component {
     properties: PropTypes.array.isRequired,
     activeProperty: PropTypes.object.isRequired,
     setActiveProperty: PropTypes.func.isRequired,
+    filteredProperties: PropTypes.array,
+    isFiltering: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -35,7 +37,7 @@ export default class GoogleMap extends Component {
 
   componentDidUpdate(prevProps) {
     const { activeProperty: prevProperty } = prevProps;
-    const { activeProperty } = this.props;
+    const { activeProperty, filteredProperties, isFiltering } = this.props;
 
     // Typical usage (don't forget to compare props):
     if (activeProperty.index !== prevProperty.index) {
@@ -44,6 +46,25 @@ export default class GoogleMap extends Component {
       // Show new infoWindow
       this.showInfoWindow(activeProperty.index);
     }
+
+    const { markers } = this.state;
+
+    markers.forEach(marker => {
+      const { property } = marker; // what is the associated property
+
+      if (isFiltering) {
+        // show markers of filtered properties
+        if (filteredProperties.includes(property)) {
+          markers[property.index].setVisible(true);
+        } else {
+          // hide all other markers
+          markers[property.index].setVisible(false);
+        }
+      } else {
+        // show all markers
+        markers[property.index].setVisible(true);
+      }
+    });
   }
 
   createMarkers(properties) {
@@ -70,6 +91,7 @@ export default class GoogleMap extends Component {
           // The anchor for this image is the base of the cross (11, 52).
           anchor: new google.maps.Point(11, 52),
         },
+        property,
       });
 
       // create info window for each marker

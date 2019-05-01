@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 import Filter from './Filter';
 import image from '../images/house-location-pin.svg';
 
-function Header({ filterIsVisible, toggleFilter }) {
+function Header({ filterIsVisible, toggleFilter, handleFilterChange }) {
   return (
     <header className={`${filterIsVisible ? 'filter-is-visible' : ''}`}>
-      <Filter toggleFilter={toggleFilter} />
+      <Filter
+        toggleFilter={toggleFilter}
+        handleFilterChange={handleFilterChange}
+      />
       <img alt="" src={image} />
       <h1>Property Listings</h1>
       <button
@@ -25,6 +28,7 @@ function Header({ filterIsVisible, toggleFilter }) {
 Header.propTypes = {
   filterIsVisible: PropTypes.bool.isRequired,
   toggleFilter: PropTypes.func.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
 };
 
 export default Header;

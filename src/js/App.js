@@ -14,6 +14,7 @@ class App extends React.Component {
       properties: data.properties,
       activeProperty: data.properties[0],
       filterIsVisible: false,
+      filterBedrooms: 'any',
     };
 
     this.setActiveProperty = this.setActiveProperty.bind(this);
@@ -44,6 +45,14 @@ class App extends React.Component {
     });
   };
 
+  handleFilterChange = e => {
+    const { value, name } = e.target;
+    console.log(value, name);
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     const { properties, activeProperty, filterIsVisible } = this.state;
     return (
@@ -54,6 +63,7 @@ class App extends React.Component {
           <Header
             filterIsVisible={filterIsVisible}
             toggleFilter={this.toggleFilter}
+            handleFilterChange={this.handleFilterChange}
           />
           {/* Header - End */}
 

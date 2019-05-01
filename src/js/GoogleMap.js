@@ -89,6 +89,8 @@ export default class GoogleMap extends Component {
       markers.push(this.marker);
 
       this.showInfoWindow(activePropertyIndex);
+
+      return property;
     });
   }
 

@@ -16,6 +16,8 @@ class App extends React.Component {
       filterIsVisible: false,
       // eslint-disable-next-line react/no-unused-state
       filterBedrooms: 'any',
+      // eslint-disable-next-line react/no-unused-state
+      filterBathrooms: 'any',
       filteredProperties: [],
       isFiltering: false,
     };
@@ -62,17 +64,23 @@ class App extends React.Component {
   };
 
   filterProperties = () => {
-    const { properties, filterBedrooms } = this.state;
-    const isFiltering = filterBedrooms !== 'any';
+    const { properties, filterBedrooms, filterBathrooms } = this.state;
+    const isFiltering = filterBedrooms !== 'any' || filterBathrooms !== 'any';
 
-    console.log(isFiltering, filterBedrooms);
+    // console.log(isFiltering, filterBedrooms);
 
     const getFilteredProperties = propertiesList => {
-      const filteredProperties = propertiesList.filter(
-        property =>
-          property.bedrooms === parseInt(filterBedrooms) ||
-          filterBedrooms === 'any'
-      );
+      const filteredProperties = propertiesList
+        .filter(
+          property =>
+            property.bedrooms === parseInt(filterBedrooms) ||
+            filterBedrooms === 'any'
+        )
+        .filter(
+          property =>
+            property.bathrooms === parseInt(filterBathrooms) ||
+            filterBathrooms === 'any'
+        );
 
       return filteredProperties;
     };

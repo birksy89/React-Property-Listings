@@ -33,6 +33,20 @@ export default class GoogleMap extends Component {
     this.createMarkers(properties);
   }
 
+  componentDidUpdate(prevProps) {
+    const { activeProperty: prevProperty } = prevProps;
+    const { activeProperty } = this.props;
+
+    // Typical usage (don't forget to compare props):
+    if (activeProperty.index !== prevProperty.index) {
+      const { markers } = this.state;
+      markers[activeProperty.index].iw.open(
+        this.map,
+        markers[activeProperty.index]
+      );
+    }
+  }
+
   createMarkers(properties) {
     const { setActiveProperty, activeProperty } = this.props;
     const activePropertyIndex = activeProperty.index;
@@ -72,10 +86,11 @@ export default class GoogleMap extends Component {
           marker.iw.close();
         });
 
+        // Open this marker's infowindow
+        // iw.open(this.map, this);
         // set active property onto the state
         setActiveProperty(property);
       });
-
       // push this marker to the markers array on the state
       markers.push(this.marker);
 

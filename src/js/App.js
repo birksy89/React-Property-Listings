@@ -14,7 +14,7 @@ class App extends React.Component {
 
     this.state = {
       properties: data.properties,
-      activeProperty: data.properties[10],
+      activeProperty: data.properties[0],
     };
 
     this.setActiveProperty = this.setActiveProperty.bind(this);

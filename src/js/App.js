@@ -106,6 +106,24 @@ class App extends React.Component {
     });
   };
 
+  clearFilter = (e, form) => {
+    e.preventDefault();
+    console.log('Clear the filters!', e, form);
+
+    const { properties } = this.state;
+
+    this.setState({
+      filterBedrooms: 'any',
+      filterBathrooms: 'any',
+      filterCars: 'any',
+      filteredProperties: [],
+      isFiltering: false,
+      activeProperty: properties[0],
+    });
+
+    form.current.reset();
+  };
+
   render() {
     const {
       properties,
@@ -124,6 +142,7 @@ class App extends React.Component {
             filterIsVisible={filterIsVisible}
             toggleFilter={this.toggleFilter}
             handleFilterChange={this.handleFilterChange}
+            clearFilter={this.clearFilter}
           />
 
           <div className="cards container">

@@ -7,13 +7,19 @@ export default class Filter extends Component {
   static propTypes = {
     toggleFilter: PropTypes.func.isRequired,
     handleFilterChange: PropTypes.func.isRequired,
+    clearFilter: PropTypes.func.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.formFilter = React.createRef();
+  }
+
   render() {
-    const { toggleFilter, handleFilterChange } = this.props;
+    const { toggleFilter, handleFilterChange, clearFilter } = this.props;
 
     return (
-      <form className="filter">
+      <form ref={this.formFilter} className="filter">
         <div className="filterBox">
           <label htmlFor="filterBedrooms">Bedrooms</label>
           <select
@@ -84,7 +90,11 @@ export default class Filter extends Component {
         </div>
         <div className="filterBox">
           <label>&nbsp;</label>
-          <button type="button" className="btn-clear">
+          <button
+            type="button"
+            className="btn-clear"
+            onClick={e => clearFilter(e, this.formFilter)}
+          >
             Clear
           </button>
         </div>

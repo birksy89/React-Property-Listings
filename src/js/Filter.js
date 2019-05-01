@@ -41,7 +41,11 @@ export default class Filter extends Component {
         </div>
         <div className="filterBox">
           <label htmlFor="filterCars">Car Spaces</label>
-          <select id="filterCars" name="filterCars">
+          <select
+            id="filterCars"
+            name="filterCars"
+            onChange={e => handleFilterChange(e)}
+          >
             <option value="any">Any</option>
             <option value="0">0</option>
             <option value="1">1</option>

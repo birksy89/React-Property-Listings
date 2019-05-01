@@ -20,19 +20,21 @@ class App extends React.Component {
     this.setActiveProperty = this.setActiveProperty.bind(this);
   }
 
-  setActiveProperty(property) {
+  setActiveProperty(property, scroll) {
     const { index } = property;
 
     this.setState({
       activeProperty: property,
     });
 
-    // scroll to the right property
-    const target = `#card-${index}`;
-    jump(target, {
-      duration: 800,
-      easing: easeInOutCubic,
-    });
+    if (scroll) {
+      // scroll to the right property
+      const target = `#card-${index}`;
+      jump(target, {
+        duration: 800,
+        easing: easeInOutCubic,
+      });
+    }
   }
 
   render() {
@@ -129,6 +131,7 @@ class App extends React.Component {
                   key={property._id}
                   property={property}
                   activeProperty={activeProperty}
+                  setActiveProperty={this.setActiveProperty}
                 />
               ))}
               )}

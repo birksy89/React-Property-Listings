@@ -39,7 +39,13 @@ export default class GoogleMap extends Component {
 
     // Typical usage (don't forget to compare props):
     if (activeProperty.index !== prevProperty.index) {
+      // Hide all the markers
       const { markers } = this.state;
+
+      markers.forEach(marker => {
+        marker.iw.close();
+      });
+
       markers[activeProperty.index].iw.open(
         this.map,
         markers[activeProperty.index]
@@ -89,7 +95,7 @@ export default class GoogleMap extends Component {
         // Open this marker's infowindow
         // iw.open(this.map, this);
         // set active property onto the state
-        setActiveProperty(property);
+        setActiveProperty(property, true);
       });
       // push this marker to the markers array on the state
       markers.push(this.marker);

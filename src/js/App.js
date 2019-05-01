@@ -67,8 +67,18 @@ class App extends React.Component {
 
     console.log(isFiltering, filterBedrooms);
 
+    const getFilteredProperties = propertiesList => {
+      const filteredProperties = propertiesList.filter(
+        property =>
+          property.bedrooms === parseInt(filterBedrooms) ||
+          filterBedrooms === 'any'
+      );
+
+      return filteredProperties;
+    };
+
     this.setState({
-      filteredProperties: ['Some', 'Data'],
+      filteredProperties: getFilteredProperties(properties),
       isFiltering,
     });
   };

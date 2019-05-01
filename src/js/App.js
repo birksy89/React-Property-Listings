@@ -77,7 +77,6 @@ class App extends React.Component {
                   setActiveProperty={this.setActiveProperty}
                 />
               ))}
-              )}
             </div>
           </div>
         </div>

@@ -14,7 +14,10 @@ class App extends React.Component {
       properties: data.properties,
       activeProperty: data.properties[0],
       filterIsVisible: false,
+      // eslint-disable-next-line react/no-unused-state
       filterBedrooms: 'any',
+      filteredProperties: [],
+      isFiltering: false,
     };
 
     this.setActiveProperty = this.setActiveProperty.bind(this);
@@ -48,8 +51,25 @@ class App extends React.Component {
   handleFilterChange = e => {
     const { value, name } = e.target;
     console.log(value, name);
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => {
+        this.filterProperties();
+      }
+    );
+  };
+
+  filterProperties = () => {
+    const { properties, filterBedrooms } = this.state;
+    const isFiltering = filterBedrooms !== 'any';
+
+    console.log(isFiltering, filterBedrooms);
+
     this.setState({
-      [name]: value,
+      filteredProperties: ['Some', 'Data'],
+      isFiltering,
     });
   };
 

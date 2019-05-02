@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { price:priceFormatter } from './utils/Formatters';
 
 const Card = ({ property, activeProperty, setActiveProperty }) => {
   const {

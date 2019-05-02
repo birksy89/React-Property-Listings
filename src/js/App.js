@@ -22,6 +22,8 @@ class App extends React.Component {
       // eslint-disable-next-line react/no-unused-state
       filterCars: 'any',
       filterSort: 'any',
+      priceFrom: 50000,
+      priceTo: 1000000,
       filteredProperties: [],
       isFiltering: false,
     };
@@ -74,11 +76,15 @@ class App extends React.Component {
       filterBathrooms,
       filterCars,
       filterSort,
+      priceFrom,
+      priceTo,
     } = this.state;
     const isFiltering =
       filterBedrooms !== 'any' ||
       filterBathrooms !== 'any' ||
-      filterCars !== 'any';
+      filterCars !== 'any' ||
+      priceFrom !== '0' ||
+      priceTo !== '1000001';
 
     // console.log(isFiltering, filterBedrooms);
 
@@ -97,6 +103,9 @@ class App extends React.Component {
         .filter(
           property =>
             property.carSpaces === parseInt(filterCars) || filterCars === 'any'
+        )
+        .filter(
+          property => property.price >= priceFrom && property.price <= priceTo
         );
 
       // sort the properties

@@ -60,7 +60,11 @@ export default class Filter extends Component {
         </div>
         <div className="filterBox filterFrom">
           <label htmlFor="priceFrom">Min Price</label>
-          <select id="priceFrom" name="priceFrom">
+          <select
+            id="priceFrom"
+            name="priceFrom"
+            onChange={e => handleFilterChange(e)}
+          >
             <option value="0">Any</option>
             <option value="500000">{500000}</option>
             <option value="600000">{600000}</option>
@@ -71,7 +75,11 @@ export default class Filter extends Component {
         </div>
         <div className="filterBox">
           <label htmlFor="priceTo">Max Price</label>
-          <select id="priceTo" name="priceTo">
+          <select
+            id="priceTo"
+            name="priceTo"
+            onChange={e => handleFilterChange(e)}
+          >
             <option value="1000001">Any</option>
             <option value="600000">{600000}</option>
             <option value="700000">{700000}</option>

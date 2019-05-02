@@ -44,7 +44,10 @@ export default class GoogleMap extends Component {
       // Hide all the markers
       this.hideInfoWindows();
       // Show new infoWindow
-      this.showInfoWindow(activeProperty.index);
+
+      if (filteredProperties.length > 0) {
+        this.showInfoWindow(activeProperty.index);
+      }
     }
 
     const { markers } = this.state;

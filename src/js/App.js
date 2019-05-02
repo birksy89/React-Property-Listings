@@ -5,6 +5,7 @@ import Header from './Header';
 import GoogleMap from './GoogleMap';
 import data from './data/Data';
 import { easeInOutCubic } from './utils/Easing';
+import image from '../images/location-map.svg';
 
 class App extends React.Component {
   constructor(props) {
@@ -101,7 +102,7 @@ class App extends React.Component {
 
     this.setState({
       filteredProperties: getFilteredProperties(properties),
-      activeProperty: getFilteredProperties(properties)[0],
+      activeProperty: getFilteredProperties(properties)[0] || properties[0],
       isFiltering,
     });
   };
@@ -146,7 +147,11 @@ class App extends React.Component {
           />
 
           <div className="cards container">
-            <div className="cards-list row ">
+            <div
+              className={`cards-list row ${
+                isFiltering && propertiesList.length === 0 ? 'is-empty' : ''
+              }`}
+            >
               {propertiesList.map(property => (
                 <Card
                   key={property._id}
@@ -155,6 +160,13 @@ class App extends React.Component {
                   setActiveProperty={this.setActiveProperty}
                 />
               ))}
+
+              {isFiltering && propertiesList.length === 0 && (
+                <p className="warning">
+                  <img src={image} alt="no properties" />
+                  <br /> No properties were found.
+                </p>
+              )}
             </div>
           </div>
         </div>

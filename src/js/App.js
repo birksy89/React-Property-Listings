@@ -21,6 +21,7 @@ class App extends React.Component {
       filterBathrooms: 'any',
       // eslint-disable-next-line react/no-unused-state
       filterCars: 'any',
+      filterSort: 'any',
       filteredProperties: [],
       isFiltering: false,
     };
@@ -72,6 +73,7 @@ class App extends React.Component {
       filterBedrooms,
       filterBathrooms,
       filterCars,
+      filterSort,
     } = this.state;
     const isFiltering =
       filterBedrooms !== 'any' ||
@@ -97,6 +99,19 @@ class App extends React.Component {
             property.carSpaces === parseInt(filterCars) || filterCars === 'any'
         );
 
+      // sort the properties
+      switch (filterSort) {
+        case '0':
+          filteredProperties.sort((a, b) => a.price - b.price);
+          break;
+        case '1':
+          filteredProperties.sort((a, b) => b.price - a.price);
+          break;
+        default:
+          // eslint-disable-next-line no-unused-expressions
+          filteredProperties;
+      }
+
       return filteredProperties;
     };
 
@@ -113,7 +128,12 @@ class App extends React.Component {
 
     const { properties } = this.state;
 
+    const sortedProperties = properties.sort((a, b) => a.index - b.index);
+
+    console.log(sortedProperties);
+
     this.setState({
+      properties: sortedProperties,
       filterBedrooms: 'any',
       filterBathrooms: 'any',
       filterCars: 'any',
@@ -132,9 +152,22 @@ class App extends React.Component {
       filterIsVisible,
       filteredProperties,
       isFiltering,
+      filterSort,
     } = this.state;
 
     const propertiesList = isFiltering ? filteredProperties : properties;
+
+    switch (filterSort) {
+      case '0':
+        propertiesList.sort((a, b) => a.price - b.price);
+        break;
+      case '1':
+        propertiesList.sort((a, b) => b.price - a.price);
+        break;
+      default:
+        // eslint-disable-next-line no-unused-expressions
+        propertiesList.sort((a, b) => a.index - b.index);
+    }
 
     return (
       <div>

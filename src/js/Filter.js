@@ -82,7 +82,11 @@ export default class Filter extends Component {
         </div>
         <div className="filterBox">
           <label htmlFor="filterSort">Order by</label>
-          <select id="filterSort" name="filterSort">
+          <select
+            id="filterSort"
+            name="filterSort"
+            onChange={e => handleFilterChange(e)}
+          >
             <option value="any">Default</option>
             <option value="0">Price: - Low to High</option>
             <option value="1">Price: - High to Low</option>

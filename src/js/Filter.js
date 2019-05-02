@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { priceFormat } from './utils/Formatters';
 
 export default class Filter extends Component {
   static propTypes = {
@@ -66,11 +67,11 @@ export default class Filter extends Component {
             onChange={e => handleFilterChange(e)}
           >
             <option value="0">Any</option>
-            <option value="500000">{500000}</option>
-            <option value="600000">{600000}</option>
-            <option value="700000">{700000}</option>
-            <option value="800000">{800000}</option>
-            <option value="900000">{900000}</option>
+            <option value="500000">{priceFormat(500000)}</option>
+            <option value="600000">{priceFormat(600000)}</option>
+            <option value="700000">{priceFormat(700000)}</option>
+            <option value="800000">{priceFormat(800000)}</option>
+            <option value="900000">{priceFormat(900000)}</option>
           </select>
         </div>
         <div className="filterBox">
@@ -81,11 +82,11 @@ export default class Filter extends Component {
             onChange={e => handleFilterChange(e)}
           >
             <option value="1000001">Any</option>
-            <option value="600000">{600000}</option>
-            <option value="700000">{700000}</option>
-            <option value="800000">{800000}</option>
-            <option value="900000">{900000}</option>
-            <option value="1000000">{1000000}</option>
+            <option value="600000">{priceFormat(600000)}</option>
+            <option value="700000">{priceFormat(700000)}</option>
+            <option value="800000">{priceFormat(800000)}</option>
+            <option value="900000">{priceFormat(900000)}</option>
+            <option value="1000000">{priceFormat(1000000)}</option>
           </select>
         </div>
         <div className="filterBox">

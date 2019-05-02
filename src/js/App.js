@@ -146,6 +146,8 @@ class App extends React.Component {
       filterBedrooms: 'any',
       filterBathrooms: 'any',
       filterCars: 'any',
+      priceFrom: 50000,
+      priceTo: 1000000,
       filteredProperties: [],
       isFiltering: false,
       activeProperty: properties[0],

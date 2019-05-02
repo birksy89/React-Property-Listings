@@ -42,10 +42,12 @@ export default class GoogleMap extends Component {
     // Typical usage (don't forget to compare props):
     if (activeProperty.index !== prevProperty.index) {
       // Hide all the markers
-      this.hideInfoWindows();
       // Show new infoWindow
 
-      if (filteredProperties.length > 0) {
+      if (isFiltering && filteredProperties.length === 0) {
+        this.hideInfoWindows();
+      } else {
+        this.hideInfoWindows();
         this.showInfoWindow(activeProperty.index);
       }
     }

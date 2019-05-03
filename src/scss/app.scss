@@ -24,11 +24,11 @@ header {
         font-size: 16px;
         position: relative;
         bottom: -7px;
-        
+
         margin: 0 0 20px 5px;
         text-transform: uppercase;
         color: #fff;
-        
+
     }
     .btn-clear {
         background: transparent;
@@ -55,7 +55,7 @@ header {
         }
     }
     @media (min-width: 1400px) {
-        
+
         h1 {
             font-size: 40px;
             margin: 0 0 0 30px;
@@ -104,7 +104,7 @@ header {
     text-align: left;
     padding: 32px 130px 30px 30px;
     .filterBox {
-        margin: 0 20px 20px 0;
+        margin: 0 15px 20px 0;
         display: inline-block;
         label {
             display: block;
@@ -207,7 +207,7 @@ html, body {
         position: relative;
     }
     .location {
-    
+
     }
     .features {
         list-style: none;
@@ -233,7 +233,7 @@ html, body {
                 background-size: auto 100%;
                 background-repeat: no-repeat;
             }
-            
+
         }
     }
     &.is-active {

@@ -101,7 +101,7 @@ export default class GoogleMap extends Component {
 
       // create info window for each marker
       const iw = new google.maps.InfoWindow({
-        content: `<h1>${address}</h1>`,
+        content: `<h4>${address}</h4>`,
       });
 
       this.marker.iw = iw;

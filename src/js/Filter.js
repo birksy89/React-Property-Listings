@@ -24,6 +24,7 @@ export default class Filter extends Component {
         <div className="filterBox">
           <label htmlFor="filterBedrooms">Bedrooms</label>
           <select
+            className="form-control"
             id="filterBedrooms"
             name="filterBedrooms"
             onChange={e => handleFilterChange(e)}
@@ -37,6 +38,7 @@ export default class Filter extends Component {
         <div className="filterBox">
           <label htmlFor="filterBathrooms">Bathrooms</label>
           <select
+            className="form-control"
             id="filterBathrooms"
             name="filterBathrooms"
             onChange={e => handleFilterChange(e)}
@@ -49,6 +51,7 @@ export default class Filter extends Component {
         <div className="filterBox">
           <label htmlFor="filterCars">Car Spaces</label>
           <select
+            className="form-control"
             id="filterCars"
             name="filterCars"
             onChange={e => handleFilterChange(e)}
@@ -62,6 +65,7 @@ export default class Filter extends Component {
         <div className="filterBox filterFrom">
           <label htmlFor="priceFrom">Min Price</label>
           <select
+            className="form-control"
             id="priceFrom"
             name="priceFrom"
             onChange={e => handleFilterChange(e)}
@@ -77,6 +81,7 @@ export default class Filter extends Component {
         <div className="filterBox">
           <label htmlFor="priceTo">Max Price</label>
           <select
+            className="form-control"
             id="priceTo"
             name="priceTo"
             onChange={e => handleFilterChange(e)}
@@ -92,6 +97,7 @@ export default class Filter extends Component {
         <div className="filterBox">
           <label htmlFor="filterSort">Order by</label>
           <select
+            className="form-control"
             id="filterSort"
             name="filterSort"
             onChange={e => handleFilterChange(e)}
@@ -101,7 +107,7 @@ export default class Filter extends Component {
             <option value="1">Price: - High to Low</option>
           </select>
         </div>
-        <div className="filterBox">
+        <div className="filterBox ">
           <label>&nbsp;</label>
           <button
             type="button"

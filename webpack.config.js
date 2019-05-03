@@ -91,6 +91,7 @@ module.exports = env => {
       plugins.push(
         new HtmlWebpackPlugin({
           template: './src/index.html',
+          favicon: 'src/favicon.ico',
         })
       );
       if (isDevelopment) {
